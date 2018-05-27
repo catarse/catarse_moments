@@ -133,3 +133,5 @@ CREATE UNIQUE INDEX index_project_transitions_parent_sort ON catarse_cache.proje
 CREATE INDEX project_transitions_project_id_idx ON catarse_cache.project_transitions (project_id) WHERE most_recent;
 CREATE INDEX project_transitions_project_id_to_state_created_at_idx on catarse_cache.project_transitions (project_id,to_state,created_at);
 CREATE INDEX to_state_project_tran_idx on catarse_cache.project_transitions (to_state);
+create index path_idx_moments_navigations_tbl on moment_service.moments_navigation_projects_tbl(path) where path !~ '^/projects/d+/.+';
+create index path_created_at_idx_moments_navigations_tbl on moment_service.moments_navigation_projects_tbl(path, created_at);
